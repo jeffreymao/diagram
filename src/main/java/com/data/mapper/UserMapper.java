@@ -1,6 +1,7 @@
 package com.data.mapper;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
@@ -37,5 +38,14 @@ public interface UserMapper {
 
 	@Delete("DELETE FROM users WHERE id =#{id}")
 	void delete(Long id);
+	
+	@Select("SELECT gpdm,zqjc FROM usrzqzb1 limit 100")
+	@Results({
+		@Result(property="gpdm",column="gpdm"),
+		@Result(property="zqjc",column="zqjc")
+	})
+	List<Map<String,String>> getAllCompanys();
+	
+	
 
 }

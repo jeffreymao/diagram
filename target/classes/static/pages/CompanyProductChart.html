@@ -326,15 +326,17 @@
 
         var initMenu = function () {
             $.ajax({
-                url: "../service/DataService.asmx/GetAllCompanys",
+                url: "../getAllCompanys",
                 type: "post",
                 asnyc: false,
                 data: "{}",
                 dataType: "json",
                 contentType: "application/json",
                 success: function (result) {
-                    if (result.d != null && result.d != "-1") {
-                        jsonData = JSON.parse(result.d);
+                	alert(typeof(result))
+                    if (result != null && result != "-1") {
+                        //jsonData = JSON.parse(result);
+                        jsonData = result
                         myGrid = $("#menu").ligerGrid({
                             height: "99%", width: "98%",
                             columns: menuCol, data: $.extend(true, {}, jsonData), enabledSort: false,
